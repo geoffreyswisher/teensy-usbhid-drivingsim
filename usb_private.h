@@ -44,7 +44,7 @@ extern "C"{
 
 #define ENDPOINT0_SIZE          64
 
-#define DEBUG_INTERFACE		2
+#define DEBUG_INTERFACE		1
 #define DEBUG_TX_ENDPOINT	1
 #define DEBUG_TX_SIZE		64
 #define DEBUG_TX_BUFFER		EP_DOUBLE_BUFFER
@@ -54,7 +54,7 @@ extern "C"{
 #define DEBUG_RX_BUFFER		EP_DOUBLE_BUFFER
 #define DEBUG_RX_INTERVAL	2
 
-#define KEYBOARD_INTERFACE	0
+/*#define KEYBOARD_INTERFACE	0
 #define KEYBOARD_ENDPOINT	3
 #define KEYBOARD_SIZE		8
 #define KEYBOARD_BUFFER		EP_DOUBLE_BUFFER
@@ -64,22 +64,22 @@ extern "C"{
 #define MOUSE_ENDPOINT		4
 #define MOUSE_SIZE		    8
 #define MOUSE_BUFFER		EP_DOUBLE_BUFFER
-#define MOUSE_INTERVAL		1
+#define MOUSE_INTERVAL		1*/
 
-#define JOYSTICK_INTERFACE	3
-#define JOYSTICK_ENDPOINT	5
+#define JOYSTICK_INTERFACE	2
+#define JOYSTICK_ENDPOINT	3
 #define JOYSTICK_SIZE		8
 #define JOYSTICK_BUFFER		EP_DOUBLE_BUFFER
 #define JOYSTICK_INTERVAL	2
 
-#define KEYMEDIA_INTERFACE  4
+/*#define KEYMEDIA_INTERFACE  4
 #define KEYMEDIA_ENDPOINT   6
 #define KEYMEDIA_SIZE       8
 #define KEYMEDIA_BUFFER     EP_DOUBLE_BUFFER
-#define KEYMEDIA_INTERVAL   4
+#define KEYMEDIA_INTERVAL   4*/
 
-#define NUM_ENDPOINTS		7
-#define NUM_INTERFACE		5
+#define NUM_ENDPOINTS		4
+#define NUM_INTERFACE		2
 
 
 // setup
@@ -90,14 +90,14 @@ void usb_shutdown(void);		// shut off USB
 extern volatile uint8_t usb_configuration;
 extern volatile uint8_t usb_suspended;
 extern volatile uint8_t debug_flush_timer;
-extern uint8_t keyboard_report_data[];
-extern uint8_t keyboard_idle_count;
-extern volatile uint8_t keyboard_leds;
-extern uint8_t mouse_buttons;
+//extern uint8_t keyboard_report_data[];
+//extern uint8_t keyboard_idle_count;
+//extern volatile uint8_t keyboard_leds;
+//extern uint8_t mouse_buttons;
 extern uint8_t joystick_report_data[8];
-extern uint8_t keymedia_report_data[8];
-extern uint16_t keymedia_consumer_keys[4];
-extern uint8_t keymedia_system_keys[3];
+//extern uint8_t keymedia_report_data[8];
+//extern uint16_t keymedia_consumer_keys[4];
+//extern uint8_t keymedia_system_keys[3];
 
 
 

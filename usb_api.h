@@ -7,7 +7,7 @@
 #include "Print.h"
 #include "Stream.h"
 
-class usb_keyboard_class : public Print
+/*class usb_keyboard_class : public Print
 {
 	public:
 	void begin(void) { }
@@ -77,7 +77,7 @@ class usb_mouse_class
 };
 
 extern usb_mouse_class Mouse;
-
+*/
 
 
 extern uint8_t joystick_report_data[8];
@@ -103,6 +103,7 @@ class usb_joystick_class
 		}
 		if (!manual_mode) send_now();
 	}
+
 	inline void steering(uint16_t val) {
 		if (val > 1023) val = 1023;
 		//joystick_report_data[4] = (joystick_report_data[4] & 0x0F) | (val << 4);
@@ -113,6 +114,7 @@ class usb_joystick_class
 		joystick_report_data[1] = ((joystick_report_data[1] & 0xFC) | (val >> 8)) & 0xFF;
 		if (!manual_mode) send_now();
 	}
+
 	inline void throttle(uint16_t val) {
 		if (val > 1023) val = 1023;
 		//joystick_report_data[1] = (joystick_report_data[5] & 0x3F) | (val << 6);
@@ -121,6 +123,7 @@ class usb_joystick_class
 		joystick_report_data[2] = ((joystick_report_data[2] & 0xF0) | (val >> 6)) & 0xFF;
 		if (!manual_mode) send_now();
 	}
+
 	inline void brake(uint16_t val) {
 		if (val > 1023) val = 1023;
 		joystick_report_data[2] = ((joystick_report_data[2] & 0x0F) | (val << 4)) & 0xFF;
@@ -128,14 +131,23 @@ class usb_joystick_class
 
 		if (!manual_mode) send_now();
 	}
-	inline void butto(uint16_t b, bool val) {
-		b--;
+
+	inline void buttonPress(uint16_t b, bool val) {
+
+		// TODO: implement switch
 		if (b == 0) {
 			joystick_report_data[3] = ((joystick_report_data[3] & 0xBF) | (val << 6));
 		}
 		if (b == 1) {
 			joystick_report_data[3] = ((joystick_report_data[3] & 0x7F) | (val << 7));
 		}
+		if (b == 2) {
+			joystick_report_data[4] = ((joystick_report_data[4] & 0xFE) | (val));
+		}
+		if (b == 3) {
+			joystick_report_data[4] = ((joystick_report_data[4] & 0xFD) | (val << 1));
+		}
+		
 
 		if (!manual_mode) send_now();
 	}

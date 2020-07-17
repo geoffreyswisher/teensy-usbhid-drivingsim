@@ -32,7 +32,7 @@
 
 
 // Step #1, decode UTF8 to Unicode code points
-//
+/*
 size_t usb_keyboard_class::write(uint8_t c)
 {
 	if (c < 0x80) {
@@ -624,7 +624,7 @@ bool usb_mouse_class::isPressed(uint8_t b)
 {
 	return ((mouse_buttons & (b & 7)) != 0);
 }
-
+*/
 
 void usb_joystick_class::send_now(void)
 {
@@ -921,7 +921,7 @@ usb_serial_class::operator bool()
 // Preinstantiate Objects //////////////////////////////////////////////////////
 
 usb_serial_class	Serial = usb_serial_class();
-usb_keyboard_class	Keyboard = usb_keyboard_class();
-usb_mouse_class		Mouse = usb_mouse_class();
+//usb_keyboard_class	Keyboard = usb_keyboard_class();
+//usb_mouse_class		Mouse = usb_mouse_class();
 usb_joystick_class	DrivingSim = usb_joystick_class();
 
