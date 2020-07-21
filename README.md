@@ -1,1 +1,1 @@
-#Custom USB HID Device for Sim Rigs
+# Custom USB HID Device for Sim Rigs
