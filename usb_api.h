@@ -59,20 +59,28 @@ class usb_joystick_class
 		if (!manual_mode) send_now();
 	}
 
+	inline void clutch(uint16_t val) {
+		if (val > 1023) val = 1023;
+		joystick_report_data[3] = ((joystick_report_data[3] & 0x3F) | (val << 6)) & 0xFF;
+		joystick_report_data[4] = ((joystick_report_data[4] & 0x00) | (val >> 2)) & 0xFF;
+
+		if (!manual_mode) send_now();
+	}
+
 	inline void buttonPress(uint16_t b, bool val) {
 
 		// TODO: implement switch
 		if (b == 0) {
-			joystick_report_data[3] = ((joystick_report_data[3] & 0xBF) | (val << 6));
+			joystick_report_data[5] = ((joystick_report_data[5] & 0xFE) | (val));
 		}
 		if (b == 1) {
-			joystick_report_data[3] = ((joystick_report_data[3] & 0x7F) | (val << 7));
+			joystick_report_data[5] = ((joystick_report_data[5] & 0xFD) | (val << 1));
 		}
 		if (b == 2) {
-			joystick_report_data[4] = ((joystick_report_data[4] & 0xFE) | (val));
+			joystick_report_data[5] = ((joystick_report_data[5] & 0xF9) | (val << 2));
 		}
 		if (b == 3) {
-			joystick_report_data[4] = ((joystick_report_data[4] & 0xFD) | (val << 1));
+			joystick_report_data[5] = ((joystick_report_data[5] & 0xF0) | (val << 3));
 		}
 		
 

@@ -78,30 +78,31 @@ static const uint8_t PROGMEM device_descriptor[] = {
 
 #ifdef JOYSTICK_INTERFACE
 static const uint8_t PROGMEM joystick_hid_report_desc[] = {
-        0x05, 0x01,                     // Usage Page (Generic Desktop)
-        0x09, 0x04,                     // Usage (Joystick)
-        0xA1, 0x01,                     // Collection (Application)
-        0x05, 0x01,                     // Usage Page (Generic Desktop)
-	0x09, 0x01,			// Usage (Pointer)
-        0xA1, 0x00,                     // Collection ()
-	0x15, 0x00,			//   Logical Minimum (0)
-	0x26, 0xFF, 0x03,		//   Logical Maximum (1023)
-	0x75, 0x0A,			//   Report Size (10)
-	0x95, 0x03,			//   Report Count (3)
-	0x09, 0x30,			//   Usage (X)
-	0x09, 0x31,			//   Usage (Y)
-        0x09, 0x32,                     //   Usage (Z)
-	0x81, 0x02,			//   Input (variable,absolute)
-        0xC0,                           // End Collection
-        0x15, 0x00,                     // Logical Minimum (0)
-        0x25, 0x01,                     // Logical Maximum (1)
-        0x75, 0x01,                     // Report Size (1)
-        0x95, 0x22,                     // Report Count (32)
-        0x05, 0x09,			// Usage Page (Button)
-	0x19, 0x01,			// Usage Minimum (Button #1)
-	0x29, 0x22,			// Usage Maximum (Button #32)
-	0x81, 0x02,			// Input (variable,absolute)
-        0xC0                            // End Collection
+        0x05, 0x01,         // Usage Page (Generic Desktop)
+        0x09, 0x04,         // Usage (Joystick)
+        0xA1, 0x01,         // Collection (Application)
+        0x05, 0x01,         	// Usage Page (Generic Desktop)
+		0x09, 0x01,				// Usage (Pointer)
+        0xA1, 0x00,             // Collection ()
+		0x15, 0x00,				//   Logical Minimum (0)
+		0x26, 0xFF, 0x03,		//   Logical Maximum (1023)
+		0x75, 0x0A,				//   Report Size (10)
+		0x95, 0x04,				//   Report Count (4)
+		0x09, 0x30,				//   Usage (X)
+		0x09, 0x31,				//   Usage (Y)
+        0x09, 0x32,             //   Usage (Z)
+		0x09, 0x33,				//   Usage (Z rot)
+		0x81, 0x02,				//   Input (variable,absolute)
+        0xC0,                   // End Collection
+        0x15, 0x00,             // Logical Minimum (0)
+        0x25, 0x01,             // Logical Maximum (1)
+        0x75, 0x01,             // Report Size (1)
+        0x95, 0x16,             // Report Count (22)
+        0x05, 0x09,				// Usage Page (Button)
+		0x19, 0x01,				// Usage Minimum (Button #1)
+		0x29, 0x16,				// Usage Maximum (Button #22)
+		0x81, 0x02,				// Input (variable,absolute)
+        0xC0                // End Collection
 };
 #endif
 
@@ -286,12 +287,12 @@ void usb_init(void)
 	usb_suspended = 0;
 	debug_flush_timer = 0;
 	joystick_report_data[0] = 0x00;
-	joystick_report_data[1] = 0x02;
-        joystick_report_data[2] = 0x0F;
-	joystick_report_data[3] = 0x20;
-        joystick_report_data[4] = 0x00;
+	joystick_report_data[1] = 0x00;
+    joystick_report_data[2] = 0x00;
+	joystick_report_data[3] = 0x00;
+    joystick_report_data[4] = 0x00;
 	joystick_report_data[5] = 0x00;
-        joystick_report_data[6] = 0x00;
+    joystick_report_data[6] = 0x00;
 	joystick_report_data[7] = 0x00;
 	UDINT = 0;
         UDIEN = (1<<EORSTE)|(1<<SOFE);
