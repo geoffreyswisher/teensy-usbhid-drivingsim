@@ -1,6 +1,6 @@
 # Custom USB HID Device for Sim Rigs
 
-*italic* Disclaimer: This project is not finished and currently only supports the Teensy 2.0
+*Disclaimer: This project is not finished and currently only supports the Teensy 2.0*
 
 ## Features
 
